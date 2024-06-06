@@ -185,6 +185,13 @@ module RustNames = struct
     parse_pattern "core::ops::index::IndexMut<[@], core::ops::range::RangeTo<usize>>::index_mut", Builtin.slice_subslice_to;
     parse_pattern "core::ops::index::Index<[@], core::ops::range::RangeFrom<usize>>::index", Builtin.slice_subslice_from;
     parse_pattern "core::ops::index::IndexMut<[@], core::ops::range::RangeFrom<usize>>::index_mut", Builtin.slice_subslice_from;
+    (* parse_pattern "core::slice::index::{core::ops::index::Index<[@T], @I>}::index<@, core::ops::range::Range<usize>>", Builtin.slice_subslice; *)
+    (* parse_pattern "core::slice::index::{core::ops::index::IndexMut<[@T], @I>}::index_mut<@, core::ops::range::Range<usize>>", Builtin.slice_subslice; *)
+    (* parse_pattern "core::slice::index::{core::ops::index::Index<[@T], @I>}::index<@, core::ops::range::RangeTo<usize>>", Builtin.slice_subslice_to; *)
+    (* parse_pattern "core::slice::index::{core::ops::index::IndexMut<[@T], @I>}::index_mut<@, core::ops::range::RangeTo<usize>>", Builtin.slice_subslice_to; *)
+    (* parse_pattern "core::slice::index::{core::ops::index::Index<[@T], @I>}::index<@, core::ops::range::RangeFrom<usize>>", Builtin.slice_subslice_from; *)
+    (* parse_pattern "core::slice::index::{core::ops::index::IndexMut<[@T], @I>}::index_mut<@, core::ops::range::RangeFrom<usize>>", Builtin.slice_subslice_from; *)
+
 
     (* arrays *)
     parse_pattern "core::ops::index::Index<[@T; @N], core::ops::range::Range<usize>>::index", Builtin.array_to_subslice;
@@ -193,11 +200,18 @@ module RustNames = struct
     parse_pattern "core::ops::index::IndexMut<[@T; @N], core::ops::range::RangeTo<usize>>::index_mut", Builtin.array_to_subslice_to;
     parse_pattern "core::ops::index::Index<[@T; @N], core::ops::range::RangeFrom<usize>>::index", Builtin.array_to_subslice_from;
     parse_pattern "core::ops::index::IndexMut<[@T; @N], core::ops::range::RangeFrom<usize>>::index_mut", Builtin.array_to_subslice_from;
+    (* parse_pattern "core::array::{core::ops::index::Index<[@T; @N], @I>}::index<@, core::ops::range::Range<usize>, @>", Builtin.array_to_subslice; *)
+    (* parse_pattern "core::array::{core::ops::index::IndexMut<[@T; @N], @I>}::index_mut<@, core::ops::range::Range<usize>, @>", Builtin.array_to_subslice; *)
+    (* parse_pattern "core::array::{core::ops::index::Index<[@T; @N], @I>}::index<@, core::ops::range::RangeTo<usize>, @>", Builtin.array_to_subslice_to; *)
+    (* parse_pattern "core::array::{core::ops::index::IndexMut<[@T; @N], @I>}::index_mut<@, core::ops::range::RangeTo<usize>, @>", Builtin.array_to_subslice_to; *)
+    (* parse_pattern "core::array::{core::ops::index::Index<[@T; @N], @I>}::index<@, core::ops::range::RangeFrom<usize>, @>", Builtin.array_to_subslice_from; *)
+    (* parse_pattern "core::array::{core::ops::index::IndexMut<[@T; @N], @I>}::index_mut<@, core::ops::range::RangeFrom<usize>, @>", Builtin.array_to_subslice_from; *)
 
     (* slices <-> arrays *)
     parse_pattern "ArrayToSliceShared<'_, @T, @N>", Builtin.array_to_slice;
     parse_pattern "ArrayToSliceMut<'_, @T, @N>", Builtin.array_to_slice;
     parse_pattern "core::convert::TryInto<&'_ [@T], [@T; @]>::try_into", Builtin.slice_to_array;
+    (* parse_pattern "core::convert::{core::convert::TryInto<@T, @U>}::try_into<&'_ [@T], [@T; @]>", Builtin.slice_to_array; *)
 
     (* iterators *)
     parse_pattern "core::iter::traits::collect::IntoIterator<[@; @]>::into_iter", Builtin.array_into_iter;
